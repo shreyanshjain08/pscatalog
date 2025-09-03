@@ -1,28 +1,23 @@
-# 🔢 Polynomial Constant Finder (Secret Sharing Inspired)
+# 📌 Polynomial Constant Finder
 
-## 📌 Problem Statement
-You are given a **polynomial equation** in the form of roots provided in a **JSON file**.  
-The roots are encoded using **different bases** (binary, octal, decimal, hexadecimal, etc.).  
-Your task is to:
-1. **Parse the JSON** and decode each value into decimal.  
-2. Treat the keys (`1`, `2`, `3`, …) as the **x-coordinate** and the decoded values as the **y-coordinate**.  
-3. Use **Lagrange’s Interpolation Formula** to reconstruct the polynomial.  
-4. Find and print only the **constant term (C)**.  
+## 📖 Problem Statement
+The task is to find the **constant term (C)** of a polynomial equation using values provided in JSON format.  
+Each JSON file contains:
+- `n`: number of points  
+- `k`: degree of the polynomial  
+- Several key-value pairs, where each pair provides:
+  - `base`: number system of the value  
+  - `value`: number represented in that base  
+
+The goal is to parse these inputs, convert them into decimal values, and compute the **constant term (C)** of the polynomial equation.
 
 ---
 
-## 📂 Input Format
-JSON file with:
-- `n` → total number of roots provided.  
-- `k` → minimum number of roots needed (k = degree + 1).  
-- Each root is given as:
-  ```json
-  "i": {
-      "base": "b",
-      "value": "encoded_string"
-  }
+## 📂 Test Cases
 
-JSON-1
+### ✅ Test Case 1
+**Input (testcase1.json)**  
+```json
 {
   "keys": { "n": 4, "k": 3 },
   "1": { "base": "10", "value": "4" },
@@ -30,11 +25,11 @@ JSON-1
   "3": { "base": "10", "value": "12" },
   "6": { "base": "4", "value": "213" }
 }
+
 OUTPUT - Constant term (C): 3
-
-Test Case 2
-
-Input (testcase2.json)
+### ✅ Test Case 2
+**Input (testcase2.json)**  
+```json
 {
   "keys": { "n": 10, "k": 7 },
   "1": { "base": "6", "value": "13444211440455345511" },
@@ -49,6 +44,7 @@ Input (testcase2.json)
   "10": { "base": "7", "value": "1101613130313526312514143" }
 }
 
-OUTPUT -  Constant term (C): -6290016743746478080
+
+OUTPUT - Constant term (C): -6290016743746478080
 
 
